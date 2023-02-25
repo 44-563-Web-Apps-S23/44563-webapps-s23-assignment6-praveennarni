@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painter practice</title>
+</head>
+<body>   
+<h2> Narni Praveen Babu Painter entry</h2>
+    <form>
+        <label for="form1_painter">The hidden painter name</label>
+        <input type="password" id="form1_painter" name="form1_painter" value="Monet"><br>
+        <label for="form1_guess">Guess the painter</label>
+        <input type="text" id="form1_guess" name="form1_guess"><br>
+
+        <input type="button" onclick="checkPainter()" value="Check the guess">
+    </form>
+
+    <p id="results"></p>
+
+
+    <script>
+        var good = 0;
+        var oops = 0;
+        function checkPainter() {
+            painter = document.getElementById("form1_painter").value
+            guess = document.getElementById("form1_guess").value
+
+            result = document.getElementById("results")
+            if (painter == guess) {
+                good += 1
+                alert("You got it right");
+
+            } else {
+                oops += 1
+                alert("Sorry");
+            }
+            document.getElementById("results").innerHTML = "good count : " + good + " <br> oops count : " + oops
+        }
+    </script>
+</body>
+</html>
