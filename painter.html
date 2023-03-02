@@ -10,31 +10,67 @@
         <input type="password" id="form1_painter" name="form1_painter" value="Monet"><br>
         <label for="form1_guess">Guess the painter</label>
         <input type="text" id="form1_guess" name="form1_guess"><br>
-
         <input type="button" onclick="checkPainter()" value="Check the guess">
     </form>
-
     <p id="results"></p>
-
-
     <script>
         var good = 0;
         var oops = 0;
         function checkPainter() {
             painter = document.getElementById("form1_painter").value
             guess = document.getElementById("form1_guess").value
-
             result = document.getElementById("results")
             if (painter == guess) {
                 good += 1
                 alert("You got it right");
 
-            } else {
-                oops += 1
-                alert("Sorry");
+            } 
+            else {
+                oops = oops + 1;
+                alert("Sorry")
+                out.innerHTML = "Wrong count : "+oops
+
+            } 
+            if(oops==2){
+                alertButton()
             }
+        function alertButton(){
+                alert("Sorry, ran out of guesses.")
+                oops=0
+                out.innerHTML = "Wrong count: "+oops
+        }
+    }
+
+            
             document.getElementById("results").innerHTML = "good count : " + good + " <br> oops count : " + oops
+        
+    </script>
+    <div class="container">
+        <img src="NANDINA IMAGE.jpg" height="100" width="100" onclick="selectImage()" id="getimage">
+    </div>
+    <script>
+        let useImage=1
+        function selectImage(){
+            out=document.getElementById("getimage")
+            switch(useImage){
+                case 1:
+                    out.src="NANDINA IMAGE.jpg"
+                    useImage=1+useImage
+                    break;
+                case 2:
+                    out.src="ACER IMAGE.jpg"
+                    useImage=1+useImage
+                    break;
+                case 3:
+                    out.src="PANDOREA IMAGE.jpg" 
+                    useImage=1+useImage
+                    break;     
+            }
+            if(useImage==4){
+                useImage=1
+            }
         }
     </script>
+    
 </body>
 </html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Conversions</title>
+</head>
+
+<body>
+
+    <h1>shows currency conversions Praveen Narni</h1>
+
+    <form>
+        <label for="form1_base">Enter base amount</label>
+        <input type="number" id="base_element" name="form1_base" min=10 max=50 step=2 value=50> <br>
+
+        <label for="form1_conversion">Enter the conversion rate </label>
+        <input type="number" id="conversion_element" name="form1_conversion" autofocus value=35> <br>
+
+        <input type="button" onclick="convert()" value="Show conversions">
+    </form>
+
+    <script>
+
+
+        var toShow = '';
+        function convert() {
+            var baseElement = document.getElementById("base_element").value;
+            var convElement = document.getElementById("conversion_element").value;
+            var base1 = baseElement;
+            for (let n = 1; n <= 5; n++) {
+                console.log(2 ** n);
+                toShow = toShow + baseElement + ' is ' + Math.round(baseElement * convElement * 100) / 100 + ';';
+                baseElement = base1 * (2 ** n);
+            }
+            document.getElementById("result").innerHTML = 'Conversions are: ' + toShow;
+        }
+
+    </script>
+
+    <p id="result">The curency values</p>
+
+    <form>
+        <div class="form-group">
+            <input type="radio" name="action" id="mean" name="average" value="mean">
+            <label for="mean">Mean</label><br>
+            <input type="radio" name="action" id="max" name="max" value="maximum">
+            <label for="max">Max</label><br>
+            <input type="radio" name="action" id="min" name="min" value="minimum">
+            <label for="min">Min</label><br>
+    </form>
+
+    <input type="button" class="btn btn-primary" onclick="chooseOp()" value="Get values from radio group">
+    <p id="result1">Radio Buttons</p>
+    </div>
+
+    <script>
+        function chooseOp() {
+            var baseElement = document.getElementById("base_element").value;
+            var convElement = document.getElementById("conversion_element").value;
+            var res = document.querySelector('input[name="action"]:checked').value;
+            console.log('operation', res);
+            console.log('conversion', convElement);
+            var base1 = baseElement;
+            if (res == 'minimum') {
+                document.getElementById("result1").innerHTML = 'Min of ' + baseElement + ' and ' + convElement + ' is ' + Math.min(baseElement, convElement);
+            }
+            else if (res == 'maximum') {
+                document.getElementById("result1").innerHTML = 'Max of ' + baseElement + ' and ' + convElement + ' is ' + Math.max(baseElement, convElement);
+            } else if (res == 'mean') {
+                document.getElementById("result1").innerHTML = 'Mean of ' + baseElement + ' and ' + convElement + ' is ' + (parseInt(baseElement) + parseInt(convElement)) / 2;
+            }
+
+            document.getElementById("result").innerHTML = 'Conversions are: ' + toShow;
+
+        }
+</script>
+</body>
+</html>
