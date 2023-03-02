@@ -15,46 +15,48 @@
 <body>   
 <h2> Narni Praveen Babu Painter entry</h2>
     <form>
-        <label for="form1_painter">The hidden painter name</label>
-        <input type="password" id="form1_painter" name="form1_painter" value="Monet"><br>
-        <label for="form1_guess">Guess the painter</label>
-        <input type="text" id="form1_guess" name="form1_guess"><br>
-        <input type="button"class="btn btn-primary onclick="checkPainter()" value="Check the painter name">
-    </form>
-
-
-    <p id="result">This text will be replaced </p>
+        
+            <label for="form1_name">The hidden painter name</label>
+            <input type="password" id="form1_name" name="form1_name" min=10 max=50 step=2 value=Monet> <br>
+    
+            <label for="form1_guess">Guess the painter</label>
+            <input type="text" id="form1_guess" name="form1_guess" autofocus> <br>
+    
+            <input id="resolve" type="button" onclick="resolveForm()" value="Check the guess">
+        </form>
+    
+    
+        <p id="result">Results</p>
     
     <script> 
     
-    let good=0;
-    let oops=0;
     
-    function checkPainter(){
-        console.log("Getting form values")
-                x = document.getElementById("form1_painter").value
-                y = document.getElementById("form1_guess").value
-                out = document.getElementById("result")
-                if (x == y) {
-                    good = good + 1;
-                    alert("You got it right")
-                    out.innerHTML = "Right count : "+good 
-    
+    var good = 0
+        var oops = 0
+
+        function resolveForm() {
+            console.log("Check the guess")
+            a = document.getElementById("form1_name").value
+            b = document.getElementById("form1_guess").value
+
+
+            out = document.getElementById("result")
+            if (a == b) {
+                alert("You got it right")
+                good = good + 1
+            } else {
+                oops = oops + 1
+                if (oops == 11) {
+                    wrongGuess();
                 } else {
-                    oops = oops + 1;
-                    alert("Sorry")
-                    out.innerHTML = "Wrong count : "+oops
-    
-                } 
-                if(oops==5){
-                    alertButton()
+                    alert('Sorry')
                 }
-            function alertButton(){
-                    alert("Sorry, ran out of guesses.")
-                    oops=0
-                    out.innerHTML = "Wrong count: "+oops
-            }    
-            
+            }
+            out.innerHTML = "Right count: " + good + " Wrong count: " + oops
+        }
+
+        function wrongGuess() {
+            alert("Sorry, ran out of guesses.")
         }
     </script>
     <div class="container">
@@ -68,15 +70,15 @@
             case 1:
                 out.src="NANDINA.jpg"
                 useimage+=1
-                break
+                
             case 2:
-                out.src="PANDOREA IMAGE.jpg"
-                useimage+=1
-                break
-            case 3:
                 out.src="ACER IMAGE.jpeg"
                 useimage+=1
-                break     
+                
+            case 3:
+                out.src="PANDOREA IMAGE11.jpg"
+                useimage+=1
+                    
         }
         if(useimage==4){
             useimage=1
